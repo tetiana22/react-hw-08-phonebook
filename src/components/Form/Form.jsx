@@ -27,7 +27,13 @@ const FormAddContact = () => {
       return;
     }
 
-    dispatch(addContact(contact));
+    dispatch(addContact(contact))
+      .then(() => {
+        toast.success('Contact successfully added');
+      })
+      .catch(() => {
+        toast.error('error');
+      });
     event.currentTarget.reset();
   };
 

@@ -11,6 +11,7 @@ import {
   getVisibleContacts,
 } from 'components/redux/selectors';
 import { deleteContact } from 'components/redux/thunk';
+import { toast } from 'react-toastify';
 
 const ContactsList = () => {
   const contacts = useSelector(getVisibleContacts);
@@ -18,8 +19,15 @@ const ContactsList = () => {
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
-  const handleDelete = id => dispatch(deleteContact(id));
-
+  const handleDelete = id => {
+    dispatch(deleteContact(id))
+      .then(() => {
+        toast.success('Contact successfully deleted');
+      })
+      .catch(() => {
+        toast.error('error');
+      });
+  };
   return (
     <>
       {isLoading && <Spinner />}

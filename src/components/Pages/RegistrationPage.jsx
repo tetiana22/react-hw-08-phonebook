@@ -29,8 +29,22 @@ const RegistrationPage = () => {
     <>
       <Text>Registration </Text>
       <Form onSubmit={handleSubmit}>
-        <Input type="name" name="name" placeholder="Enter your name" />
-        <Input type="email" name="email" placeholder="Enter your email" />
+        <Input
+          type="name"
+          name="name"
+          placeholder="Enter your name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+        <Input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          title="Please enter a valid email address"
+          required
+        />
         <Input
           type="password"
           name="password"
