@@ -2,8 +2,8 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { Label, Input, FilterWrap } from './filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'components/redux/selectors';
-import { setFilter } from 'components/redux/filterSlice';
+import { getFilter } from 'components/redux/Contact/selectors';
+import { setFilter } from 'components/redux/Contact/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();

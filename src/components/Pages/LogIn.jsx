@@ -1,12 +1,9 @@
 import { logIn } from 'components/redux/Authorization/authThunk';
-import { toast } from 'react-toastify';
 import { Form, Input, Text, Button } from './RegistrationPage.styled';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,12 +11,7 @@ const LogIn = () => {
       email: e.target.elements.email.value,
       password: e.target.elements.password.value,
     };
-
-    dispatch(logIn(user))
-      .then(navigate('/'))
-      .catch(() => {
-        toast.error('error');
-      });
+    dispatch(logIn(user));
     e.currentTarget.reset();
   };
   return (

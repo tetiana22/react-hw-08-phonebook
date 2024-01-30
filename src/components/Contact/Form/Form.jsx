@@ -2,8 +2,8 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Form, Input, Button } from './Form.styled';
-import { getVisibleContacts } from 'components/redux/selectors';
-import { addContact } from 'components/redux/thunk';
+import { getVisibleContacts } from 'components/redux/Contact/selectors';
+import { addContact } from 'components/redux/Contact/thunk';
 
 const FormAddContact = () => {
   const dispatch = useDispatch();

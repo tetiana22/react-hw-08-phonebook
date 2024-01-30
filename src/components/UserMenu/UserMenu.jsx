@@ -9,9 +9,8 @@ const UserMenu = () => {
 
   return (
     <Wrap>
-      <nav>
-        <Link to="/contacts">Contacts</Link>
-      </nav>
+      <Link to="/contacts">Contacts</Link>
+
       <Span>Welcome {name} </Span>
       <Button type="button" onClick={() => dispatch(logOut())}>
         Log Out

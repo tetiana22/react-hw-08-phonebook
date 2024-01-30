@@ -8,7 +8,7 @@ import {
   handlePending,
   handleRejected,
   thunksByType,
-} from 'components/services/functionsTunks';
+} from 'components/redux/Contact/services/functionsTunks';
 
 const initialState = {
   items: [],

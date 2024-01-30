@@ -1,12 +1,12 @@
-import { Container, Wrapper } from '../App.styled';
-import ContactsList from '../ContactList/ContactList';
+import { Container, Wrapper } from '../../App/App.styled';
+import ContactsList from '../Contact/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../redux/selectors';
+import { getContacts } from '../redux/Contact/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from '../redux/thunk';
-import FormAddContact from 'components/Form/Form';
+import { fetchContacts } from '../redux/Contact/thunk';
+import FormAddContact from 'components/Contact/Form/Form';
 import { Section } from '../Section/Section';
-import Filter from 'components/Filter/Filter';
+import Filter from 'components/Contact/Filter/Filter';
 
 const ContactPages = () => {
   const contacts = useSelector(getContacts);
@@ -15,6 +15,7 @@ const ContactPages = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+  
   return (
     <Container>
       <Section title="Phonebook">

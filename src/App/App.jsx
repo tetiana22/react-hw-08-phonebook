@@ -1,28 +1,32 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import RegistrationPage from './Pages/RegistrationPage';
-import { Routes, Route } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
-import Home from './Pages/Home';
-import LogIn from './Pages/LogIn';
-import ContactPages from './Pages/ContactPages';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Layout } from '../components/Layout/Layout';
+import PrivateRoute from '../Routes/PrivateRoute';
+import PublicRoute from '../Routes/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { profile } from './redux/Authorization/authThunk';
-import { Spinner } from './ContactList/ContactList.styled';
+import { lazy, useEffect } from 'react';
+import { profile } from '../components/redux/Authorization/authThunk';
+import { Spinner } from '../components/Contact/ContactList/ContactList.styled';
+
+const RegistrationPage = lazy(() =>
+  import('../components/Pages/RegistrationPage')
+);
+const Home = lazy(() => import('../components/Pages/Home'));
+const LogIn = lazy(() => import('../components/Pages/LogIn'));
+const ContactPages = lazy(() => import('../components/Pages/ContactPages'));
 
 export const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(profile());
   }, [dispatch]);
 
   const profileData = useSelector(state => state.profile);
 
-  return !profileData ? (
+  return profileData ? (
+    <Spinner />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -33,23 +37,21 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={ContactPages} />
             }
           />
-
           <Route
             path="/registration"
             element={
               <PublicRoute redirectTo="/" component={RegistrationPage} />
             }
           />
-
           <Route
             path="/login"
-            element={<PublicRoute redirectTo="/" component={LogIn} />}
+            element={<PublicRoute redirectTo="/contacts" component={LogIn} />}
           />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+
       <ToastContainer />
     </>
-  ) : (
-    <Spinner />
   );
 };

@@ -9,8 +9,8 @@ import {
   selectIsLoading,
   selectError,
   getVisibleContacts,
-} from 'components/redux/selectors';
-import { deleteContact } from 'components/redux/thunk';
+} from 'components/redux/Contact/selectors';
+import { deleteContact } from 'components/redux/Contact/thunk';
 import { toast } from 'react-toastify';
 
 const ContactsList = () => {

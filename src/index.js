@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { App } from 'components/App';
+import { App } from 'App/App';
 import './index.css';
-import { store, persistor } from 'components/redux/store';
+import { store, persistor } from 'components/redux/Contact/store';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 

@@ -2,7 +2,7 @@ import {
   addContact,
   deleteContact,
   fetchContacts,
-} from 'components/redux/thunk';
+} from 'components/redux/Contact/thunk';
 
 export const arrThunks = [fetchContacts, addContact, deleteContact];
 export const thunksByType = type => arrThunks.map(el => el[type]);
